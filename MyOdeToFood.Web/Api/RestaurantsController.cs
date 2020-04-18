@@ -67,26 +67,21 @@ namespace MyOdeToFood.Web.Api
 
 
             var books = from r in sd.Restaurants
-                        join d in sd.Dhabas on r.Id equals d.Id into table1
-                        from d in table1.DefaultIfEmpty()
-                        select new JoinClass
+                        join d in sd.Dhabas on r.Id equals d.Id
+                        select new 
                         {
                             Restaurant = r, Dhaba = d,
-                            
                             Id = d.Id,
                             Name = r.Name,
-                            
-
-                        };
+                                                   };
 
             //Restaurant = r, Dhaba = d };
 
             return Ok(books);
             }
 
+}
 
 
-
-        }
     }
 
