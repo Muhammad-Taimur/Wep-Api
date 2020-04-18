@@ -75,7 +75,7 @@ namespace MyOdeToFood.Web.Api
                             
                             Id = d.Id,
                             Name = r.Name,
-                            DhabaName = d.Name
+                            
 
                         };
 
