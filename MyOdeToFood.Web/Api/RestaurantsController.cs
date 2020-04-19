@@ -9,10 +9,13 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 
 namespace MyOdeToFood.Web.Api
 {
+    //This enable Cors Api only for this contraller
+    [EnableCorsAttribute("*","*","*")]
     public class RestaurantsController : ApiController
     {
         private readonly IRestaurantData db;
@@ -41,6 +44,8 @@ namespace MyOdeToFood.Web.Api
         //}
 
         //public IEnumerable <Restaurant> Get()
+
+            //[DisableCors] this will Disable the API Cors for this method.
         public HttpResponseMessage Get(string city = "All")
         {
             MyOdeToFoodDbContext sd = new MyOdeToFoodDbContext();
@@ -93,7 +98,6 @@ namespace MyOdeToFood.Web.Api
 
 
                 case "karachi":
-
                     var query3 = from r in sd.Restaurants
                                  join d in sd.Dhabas on r.Id equals d.Id into table1
                                  from d in table1.DefaultIfEmpty()
@@ -102,8 +106,7 @@ namespace MyOdeToFood.Web.Api
                                      Restaurant = r,
                                      Dhaba = d
                                  };
-
-
+                    
                     return Request.CreateResponse(HttpStatusCode.OK,
                         query3.Where(c => c.Restaurant.City == "karachi"));
 
