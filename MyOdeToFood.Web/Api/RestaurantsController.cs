@@ -40,45 +40,157 @@ namespace MyOdeToFood.Web.Api
         //     return sd.Restaurants;
         //}
 
-        //public IHttpActionResult Get()
-        public IHttpActionResult GetAll()
+        //public IEnumerable <Restaurant> Get()
+        public HttpResponseMessage Get(string city = "All")
         {
             MyOdeToFoodDbContext sd = new MyOdeToFoodDbContext();
 
-            //List<Restaurant> lrestaurant = sd.Restaurants.ToList();
-            //List<Dhaba> ldhaba= sd.Dhabas.ToList();
+            switch (city.ToLower()) {
 
-            //var query = from r in sd.Restaurants
-            //            join d in sd.Dhabas on r.Id equals d.Id into table1
-            //            from d in table1.DefaultIfEmpty()
-            //            select new 
-            //            {
-            //                Restaurant = r ,
-            //                Dhaba = d
-            //
-            //            };
-            //            
-            //                //Restaurant = r, Dhaba = d };
-            //return Ok (query);
+                case "all":
+            var query = from r in sd.Restaurants
+                        join d in sd.Dhabas on r.Id equals d.Id into table1
+                        from d in table1.DefaultIfEmpty()
+                        select new
+                        {
+                            Restaurant = r,
+                            Dhaba = d
+                        };
+
+            // return Ok (query);
+            return Request.CreateResponse(HttpStatusCode.OK, query);
+
+                case "dublin":
+
+                    var query1 = from r in sd.Restaurants
+                                join d in sd.Dhabas on r.Id equals d.Id into table1
+                                from d in table1.DefaultIfEmpty()
+                                select new
+                                {
+                                    Restaurant = r,
+                                    Dhaba = d
+                                };
+                    
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        query1.Where(c => c.Restaurant.City == "Dublin"));
+
+
+
+                case "lahore":
+
+                    var query2 = from r in sd.Restaurants
+                                 join d in sd.Dhabas on r.Id equals d.Id into table1
+                                 from d in table1.DefaultIfEmpty()
+                                 select new
+                                 {
+                                     Restaurant = r,
+                                     Dhaba = d
+                                 };
+
+
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        query2.Where(c => c.Restaurant.City == "lahore"));
+
+
+                case "karachi":
+
+                    var query3 = from r in sd.Restaurants
+                                 join d in sd.Dhabas on r.Id equals d.Id into table1
+                                 from d in table1.DefaultIfEmpty()
+                                 select new
+                                 {
+                                     Restaurant = r,
+                                     Dhaba = d
+                                 };
+
+
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        query3.Where(c => c.Restaurant.City == "karachi"));
+
+
+                default:
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest,
+                "Value for City must be Lahore or Dublin. " + city + " is invalid");
+
+            }
+
+                //Restaurant = r, Dhaba = d };
+                //return sd.Restaurants.ToList();
+        }
 
             //var query = sd.Restaurants.FirstOrDefault();
             //return Ok (query);
 
 
 
-            var books = from r in sd.Restaurants
-                        join d in sd.Dhabas on r.Id equals d.Id
-                        select new 
-                        {
-                            Restaurant = r, Dhaba = d,
-                            Id = d.Id,
-                            Name = r.Name,
-                                                   };
+            //var books = from r in sd.Restaurants
+            //            join d in sd.Dhabas on r.Id equals d.Id
+            //            
+            //            select new JoinClass
+            //            {
+            //                Restaurant = r, Dhaba = d,
+            //                Id = d.Id,
+            //                Name = r.Name
+            //            };
+            //
+            ////Restaurant = r, Dhaba = d };
+            //
+            //return Ok(books);
+        
+        [HttpGet]
+        public IHttpActionResult  Get (int id)
+        {
+            MyOdeToFoodDbContext sd = new MyOdeToFoodDbContext();
+            
+            var query = from r in sd.Restaurants
+                            join d in sd.Dhabas on r.Id equals d.Id into table1
+                            from d in table1.DefaultIfEmpty()
+                            select new
+                            {
+                                Restaurant = r,
+                                Dhaba = d
 
-            //Restaurant = r, Dhaba = d };
+                            };
 
-            return Ok(books);
+                return Ok(query.FirstOrDefault(r => r.Restaurant.Id == id));
+//                return sd.Restaurants.FirstOrDefault(r => r.Id == id);
+                
+            
+
+        }
+
+        public void Post ([FromBody] Restaurant restaurant)
+        {
+            using (MyOdeToFoodDbContext sd = new MyOdeToFoodDbContext())
+            {
+                sd.Restaurants.Add(restaurant);
+                sd.SaveChanges();
             }
+    
+        }
+
+        public void Delete (int id)
+        {
+
+            using (MyOdeToFoodDbContext sd = new MyOdeToFoodDbContext())
+            {
+                sd.Restaurants.Remove(sd.Restaurants.FirstOrDefault(r => r.Id == id));
+                sd.SaveChanges();
+            }
+        }
+
+        public void Put (int id, [FromBody] Restaurant restaurant)
+        {
+            using (MyOdeToFoodDbContext sd = new MyOdeToFoodDbContext())
+            {
+                var entity = sd.Restaurants.FirstOrDefault(r => r.Id == id);
+                entity.CuisineType = restaurant.CuisineType;
+                entity.City = restaurant.City;
+                entity.Country= restaurant.Country;
+                sd.SaveChanges();
+            }
+
+        }
 
 }
 
