@@ -30,9 +30,9 @@ namespace MyOdeToFood.Web
             1st Parameter is for Oriigin we can add selected origin by using, or we can do * for all origins
             2nd We can select * for all headers or we can select only Json Request.
             3rd We can assign Any Request Menhod like post of Get. or * for all Method */
-
+            
             EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
-        }
-    }
-}
+        }   
+    }       
+}           

@@ -13,5 +13,10 @@ namespace MyOdeToFood.Data.Services
         public DbSet<Restaurant> Restaurants{ get; set; }
         public DbSet<Dhaba> Dhabas{ get; set; }
 
+        public DbSet<Employee> Employees{ get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Actor> Actors { get; set; }
+
+
     }
 }

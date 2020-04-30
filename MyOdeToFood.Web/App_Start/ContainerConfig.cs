@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 
+
 namespace MyOdeToFood.Web.App_Start
 {
     public class ContainerConfig
@@ -21,7 +22,12 @@ namespace MyOdeToFood.Web.App_Start
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             builder.RegisterType<SqlRestaurantData>()
-                .As<IRestaurantData, IDhabaData>()
+                .As<IRestaurantData, IDhabaData, IEmployee>()
+                .InstancePerRequest();
+
+            //new Classes added as new Builder.
+            builder.RegisterType<SqlRestaurantData>()
+                .As<IMovie, IActor>()
                 .InstancePerRequest();
 
             builder.RegisterType<MyOdeToFoodDbContext>().InstancePerRequest();

@@ -157,9 +157,6 @@ namespace MyOdeToFood.Web.Api
 
                 return Ok(query.FirstOrDefault(r => r.Restaurant.Id == id));
 //                return sd.Restaurants.FirstOrDefault(r => r.Id == id);
-                
-            
-
         }
 
         public void Post ([FromBody] Restaurant restaurant)

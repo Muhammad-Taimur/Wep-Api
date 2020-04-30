@@ -158,6 +158,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\EmployeesController.cs" />
+    <Compile Include="Api\MoviesController.cs" />
     <Compile Include="Api\RestaurantsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\ContainerConfig.cs" />
