@@ -34,6 +34,8 @@ namespace MyOdeToFood.Web
             EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
 
+
+            //This is use to show the Array inside Object Ignoring Referece Loop
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling
             = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }   
