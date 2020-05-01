@@ -12,5 +12,7 @@ namespace MyOdeToFood.Data.Models
         [Key]
         public int MovieId{ get; set; }
         public string  MovieName { get; set; }
+        //List of Actor Name and ID
+        public List<Actor> Actor { get; set; }
     }
 }

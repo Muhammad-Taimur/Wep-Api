@@ -17,6 +17,7 @@ namespace MyOdeToFood.Data.Models
 
         [ForeignKey ("Movie")]
         public int MovieId { get; set; }
+        //Navigation Property
         public virtual Movie Movie { get; set; }
     }
 }
