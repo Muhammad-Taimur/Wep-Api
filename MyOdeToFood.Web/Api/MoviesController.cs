@@ -53,15 +53,11 @@ namespace MyOdeToFood.Web.Api
 
           var newquery = sd.Movies.Include("Actor").OrderBy(a => a.MovieId).ToList();
 
-
-            //var travelCompany = objContext.TravelCompanyDetails.Include(t => t.CarDetails)
-            //    .OrderBy(a => a.TravelCompanyID).ToList();
-
 // travelCompany = objContext.TravelCompanyDetails.include("CarDetails")
 //.OrderBy(a => a.TravelCompanyID).ToList();
  
             // return Ok (query);
-            return Request.CreateResponse(HttpStatusCode.OK, query);
+            return Request.CreateResponse(HttpStatusCode.OK, newquery);
         
         }
     }
