@@ -23,20 +23,26 @@ namespace MyOdeToFood.Web.Api
             return db.GetAll();
         }
 
-        //[HttpGet]
-        //public IHttpActionResult Get(int id)
-        //{
-        //    
-        //
-        //
-        //}
+        MyOdeToFoodDbContext sd = new MyOdeToFoodDbContext();
 
-        public void Post([FromBody] Employee employee)
+        [HttpGet]
+        public Employee Get(int id)
+        {
+                //using (MyOdeToFoodDbContext sd = new MyOdeToFoodDbContext())
+                return sd.Employees.FirstOrDefault(r => r.Id == id);            
+
+        }
+
+        //public void Post([FromBody] Employee employee)
+        public Employee Post(Employee employee)
         {
             using (MyOdeToFoodDbContext sd = new MyOdeToFoodDbContext())
             {
                 sd.Employees.Add(employee);
                 sd.SaveChanges();
+
+                //return sd.Employees.Find(employee);
+                return employee;
             }
 
         }
@@ -48,16 +54,24 @@ namespace MyOdeToFood.Web.Api
             {
                 sd.Employees.Remove(sd.Employees.FirstOrDefault(r => r.Id == id));
                 sd.SaveChanges();
+
+
+
             }
         }
 
-        public void Put(int id, [FromBody] Employee employee)
+        public Employee  Put(int id,  Employee employee)
         {
             using (MyOdeToFoodDbContext sd = new MyOdeToFoodDbContext())
             {
+               
                 var entity = sd.Employees.FirstOrDefault(r => r.Id == id);
+                entity.Name = employee.Name;
+                entity.Age = employee.Age;
                 
                 sd.SaveChanges();
+
+                return employee;
             }
 
         }
