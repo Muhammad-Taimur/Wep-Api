@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,10 @@ namespace MyOdeToFood.Web
             //This is use to show the Array inside Object Ignoring Referece Loop
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling
             = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
+            //creating all the Key value in Camel Case
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
+                new CamelCasePropertyNamesContractResolver();
         }   
     }       
 }           

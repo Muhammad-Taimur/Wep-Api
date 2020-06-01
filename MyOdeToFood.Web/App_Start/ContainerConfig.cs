@@ -1,7 +1,9 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using AutoMapper;
 using MyOdeToFood.Data.Services;
+using MyOdeToFood.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +20,11 @@ namespace MyOdeToFood.Web.App_Start
         {
             var builder = new ContainerBuilder();
 
+          
             builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
+            //Register Class
             builder.RegisterType<SqlRestaurantData>()
                 .As<IRestaurantData, IDhabaData, IEmployee>()
                 .InstancePerRequest();
@@ -30,11 +34,35 @@ namespace MyOdeToFood.Web.App_Start
                 .As<IMovie, IActor>()
                 .InstancePerRequest();
 
+
+
+            //Register DB Context Class
             builder.RegisterType<MyOdeToFoodDbContext>().InstancePerRequest();
+
+            //Mapper Configuration
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MappingProfile());
+            });
+            
+            config.AssertConfigurationIsValid();
+            
+            //Register Mapping Classes
+            builder.RegisterInstance(config.CreateMapper())
+                .As<IMapper>()
+                .SingleInstance();
+
+
+
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             httpConfiguration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+
+            
+
+            
         }
 }
     }

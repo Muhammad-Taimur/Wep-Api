@@ -55,11 +55,9 @@ namespace MyOdeToFood.Web.Api
                 sd.Employees.Remove(sd.Employees.FirstOrDefault(r => r.Id == id));
                 sd.SaveChanges();
 
-
-
             }
         }
-
+        
         public Employee  Put(int id,  Employee employee)
         {
             using (MyOdeToFoodDbContext sd = new MyOdeToFoodDbContext())

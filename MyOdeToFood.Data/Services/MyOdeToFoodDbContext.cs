@@ -18,5 +18,9 @@ namespace MyOdeToFood.Data.Services
         public DbSet<Actor> Actors { get; set; }
 
 
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Movie>().HasMany(a => a.Actor);
+        //}
     }
 }

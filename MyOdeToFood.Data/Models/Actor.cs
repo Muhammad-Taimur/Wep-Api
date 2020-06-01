@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@ namespace MyOdeToFood.Data.Models
         [ForeignKey ("Movie")]
         public int MovieId { get; set; }
         //Navigation Property
+        [IgnoreDataMember]
         public virtual Movie Movie { get; set; }
     }
 }
