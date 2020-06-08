@@ -40,7 +40,6 @@ namespace MyOdeToFood.Web.Api
             var mappedResult = mapper.Map<IEnumerable<MovieModel>>(result.Include("Actor").OrderBy(a => a.MovieName));
             
             Object obb = (mappedResult);
-
             return Ok(obb);
         }
 

@@ -47,6 +47,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -95,6 +96,26 @@
     <Compile Include="Migrations\202005012131201_9.designer.cs">
       <DependentUpon>202005012131201_9.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006011811336_AddImageTable.cs" />
+    <Compile Include="Migrations\202006011811336_AddImageTable.designer.cs">
+      <DependentUpon>202006011811336_AddImageTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012136279_Change Imaage Path.cs" />
+    <Compile Include="Migrations\202006012136279_Change Imaage Path.designer.cs">
+      <DependentUpon>202006012136279_Change Imaage Path.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006081218109_Adding Image Binary Field.cs" />
+    <Compile Include="Migrations\202006081218109_Adding Image Binary Field.designer.cs">
+      <DependentUpon>202006081218109_Adding Image Binary Field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006081226574_remove Binary Table.cs" />
+    <Compile Include="Migrations\202006081226574_remove Binary Table.designer.cs">
+      <DependentUpon>202006081226574_remove Binary Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006081229472_Adding Blob Var Binary.cs" />
+    <Compile Include="Migrations\202006081229472_Adding Blob Var Binary.designer.cs">
+      <DependentUpon>202006081229472_Adding Blob Var Binary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\AddPost.cs" />
@@ -103,6 +124,7 @@
     <Compile Include="Models\DetailedClass.cs" />
     <Compile Include="Models\Dhaba.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\JoinClass.cs" />
     <Compile Include="Models\MappingProfile.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -153,6 +175,24 @@
     <EmbeddedResource Include="Migrations\202005012131201_9.resx">
       <DependentUpon>202005012131201_9.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006011811336_AddImageTable.resx">
+      <DependentUpon>202006011811336_AddImageTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012136279_Change Imaage Path.resx">
+      <DependentUpon>202006012136279_Change Imaage Path.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006081218109_Adding Image Binary Field.resx">
+      <DependentUpon>202006081218109_Adding Image Binary Field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006081226574_remove Binary Table.resx">
+      <DependentUpon>202006081226574_remove Binary Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006081229472_Adding Blob Var Binary.resx">
+      <DependentUpon>202006081229472_Adding Blob Var Binary.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="documents\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

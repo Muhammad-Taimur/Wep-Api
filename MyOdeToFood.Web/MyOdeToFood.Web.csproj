@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\EmployeesController.cs" />
+    <Compile Include="Api\ImagesController.cs" />
     <Compile Include="Api\MoviesController.cs" />
     <Compile Include="Api\RestaurantsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -215,9 +216,15 @@
     <Content Include="Views\Restaurants\Index.cshtml" />
     <Content Include="Views\Restaurants\Create.cshtml" />
     <Content Include="Views\Restaurants\Delete.cshtml" />
+    <Content Include="Views\Images\Create.cshtml" />
+    <Content Include="Views\Images\Delete.cshtml" />
+    <Content Include="Views\Images\Details.cshtml" />
+    <Content Include="Views\Images\Edit.cshtml" />
+    <Content Include="Views\Images\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="documents\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

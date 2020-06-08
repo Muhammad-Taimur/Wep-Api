@@ -9,7 +9,6 @@ namespace MyOdeToFood.Data.Models
  public class AddPost
     {
 
-       
         public Movie Movie { get; set; }
         public Actor Actor { get; set; }
     }
