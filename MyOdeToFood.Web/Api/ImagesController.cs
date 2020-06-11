@@ -183,6 +183,8 @@ namespace MyOdeToFood.Web.Api
             }
 
             return Content(HttpStatusCode.Created, "Image Uploaded in Server");
+
+            //return Content(HttpStatusCode.Created, "Image Uploaded in Server");
             //return Created( Ok, new { });
 
            // return Content(HttpStatusCode.OK);
